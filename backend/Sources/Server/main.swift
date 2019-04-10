@@ -23,7 +23,7 @@ router.get("/users/:id") { request, response, next in
 
 router.post("/users") { request, response, next in
   var userData: Data = Data()
-  try request.read(into: &userData)
+  let _ = try request.read(into: &userData)
   let user = try User(serializedData: userData)
   users[user.id] = user
   response.send(data: userData)
